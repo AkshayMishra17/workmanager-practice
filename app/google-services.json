@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "953553801063",
+    "project_id": "wokrmanagerimageuploader",
+    "storage_bucket": "wokrmanagerimageuploader.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953553801063:android:6d4a6549b9bee435cfe9c2",
+        "android_client_info": {
+          "package_name": "com.example.workmanager"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCftf2QDfcBWM-PNxES6DiTlB8VmjKEbmg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
