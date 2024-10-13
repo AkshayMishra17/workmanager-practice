@@ -4,8 +4,8 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
-
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -13,10 +13,12 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
-
 import androidx.compose.ui.Modifier
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.work.Data
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import com.example.workmanager.ui.theme.WorkManagerTheme
 
 class MainActivity : ComponentActivity() {
@@ -33,9 +35,9 @@ class MainActivity : ComponentActivity() {
         imagePickerLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if (result.resultCode == RESULT_OK) {
-                    result.data?.data?.let {
+                    result.data?.data?.let { uri ->
                         // Handle the selected image URI here
-                        // enqueueImageUpload(uri)
+                         enqueueImageUpload(uri)
                     }
                 }
             }
@@ -69,4 +71,15 @@ class MainActivity : ComponentActivity() {
             selectImage()
         }
     }
+}
+
+private fun enqueueImageUpload(imageUri: Uri){
+    val inputData = Data.Builder()
+        .putString("IMAGE_URI",imageUri.toString()).build()
+
+    //one time request
+    val uploadWorkRequest = OneTimeWorkRequestBuilder<ImageUploadWorker>()
+        .setInputData(inputData).build()
+
+    WorkManager.getInstance().enqueue(uploadWorkRequest)
 }
