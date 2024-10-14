@@ -1,6 +1,5 @@
 # Image Uploader with WorkManager and Firebase
-
-This is a proof of concept (POC) Android app demonstrating how to use `WorkManager` to upload images to Firebase Storage. The app showcases a simple implementation where the user selects an image, and the `WorkManager` handles the background upload task, even if the app is closed or the device is restarted.
+ Android app demonstrating how to use `WorkManager` to upload images to Firebase Storage. The app showcases a simple implementation where the user selects an image, and the `WorkManager` handles the background upload task, even if the app is closed or the device is restarted.
 
 ## Features
 
