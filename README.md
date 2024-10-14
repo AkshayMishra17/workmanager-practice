@@ -7,6 +7,7 @@
 - Background image upload using `WorkManager.
 - Uploads images to Firebase Storage.
 - Displays upload status (success, failure, or progress).
+- Notification on successful upload.
 
 ## Tools and Libraries Used
 
